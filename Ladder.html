@@ -72,6 +72,15 @@
             background: #d0e8f8;
         }
 
+        /* Make entire row clickable */
+        td a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            width: 100%;
+            height: 100%;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             th,
@@ -145,7 +154,10 @@
                     positionTd.textContent = position;
 
                     const nameTd = document.createElement('td');
-                    nameTd.textContent = row.name;
+                    const nameLink = document.createElement('a');
+                    nameLink.href = `${row.name.toLowerCase()}.html`; // Link to the player's page
+                    nameLink.textContent = row.name;
+                    nameTd.appendChild(nameLink);
 
                     const pointsTd = document.createElement('td');
                     pointsTd.textContent = row.points;
